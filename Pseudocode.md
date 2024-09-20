@@ -1,5 +1,7 @@
 # Pseudocode
 
+```
+
 class webgui:
 endclass webgui
 
@@ -14,3 +16,5 @@ class invoice:
   end func export
 
 endclass invoice
+
+```
