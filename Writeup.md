@@ -73,7 +73,7 @@ Software; Python isn’t needed to run the app. As it will made into an executab
   - Generate Invoices
   - Edit/Update Invoice Details
   - Navigation Menu (Home, Settings, Invoice History)
-  - 
+
   Invoice Management:
   - Create Invoice
     - Generate unique invoice ID
@@ -82,18 +82,18 @@ Software; Python isn’t needed to run the app. As it will made into an executab
   - Save Invoice
   - Update Invoice
   - Delete Invoice
-  - 
+
   Product / Service Management:
   - Add New
   - Update (Pricing, description)
   - View
   - Delete
-  - 
+
   Reporting:
   - Generate invoice reports (total sales, outstanding payments)
   - Filter reports by date, customer or product
   - export reports (PDF, CSV)
-  - 
+
   Settings:
   - Configure Tax Rates
   - Customise template
@@ -101,6 +101,7 @@ Software; Python isn’t needed to run the app. As it will made into an executab
 
 
 ## Design of Structure
+> ![Design - Flowchart](./img/Design%20-%20Flowchart.drawio.png)
 
 Create a flowchart of your program and explain and justify why you have done what you have done
 
