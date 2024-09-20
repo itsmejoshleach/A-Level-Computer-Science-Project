@@ -103,9 +103,8 @@ Software; Python isn’t needed to run the app. As it will made into an executab
 ## Design of Structure
 > ![Design - Flowchart](./img/Design%20-%20Flowchart.drawio.png)
 
-Create a flowchart of your program and explain and justify why you have done what you have done
-
 Create a decomposition diagram and explain and justify what you have done and why you have done it.
+> ![Design - Decomposition Diagram](./img/Design%20-%20Decomposition%20Diagram.drawio.png)
 
 Create pseudocode of your program – you will probably do this. Explain what you have done and why you have done it. You will add pseudocode for your different versions for top marks.
 
