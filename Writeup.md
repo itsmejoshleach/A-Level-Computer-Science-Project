@@ -118,11 +118,11 @@ Create a list of usability features and justify the choices. E.g., The way the m
 
 ## Data Dictionary Table
 
-| Variable name | Datatype | Description |
-| --- | --- | --- |
-|     |     |     |
-|     |     |     |
-|     |     |     |
+| Variable name | Datatype | Description | Validation |
+| --- | --- | --- | --- |
+|     |     |     |     |
+|     |     |     |     |
+|     |     |     |     |
 
 ## Validation
 
