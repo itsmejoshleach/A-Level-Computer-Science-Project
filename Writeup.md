@@ -110,7 +110,8 @@ Software; Python isn’t needed to run the app. As it will made into an executab
 > ### Create pseudocode of your program – you will probably do this. Explain what you have done and why you have done it. You will add pseudocode for your different versions for top marks.
 > [Pseudocode.md](./Pseudocode.md)
 
-Sketch / draw screens of your game – (not actual game/program) / program and label
+> ### Sketch / draw screens of your game – (not actual game/program) / program and label
+> ![App Sketch.png](./img/App%20Sketch.drawio.png)
 
 ## Usability Features
 
