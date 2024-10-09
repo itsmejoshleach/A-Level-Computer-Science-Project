@@ -1,0 +1,2 @@
+python-dotenv # for dealing with .env files
+InvoiceGenerator # for invoice generation
