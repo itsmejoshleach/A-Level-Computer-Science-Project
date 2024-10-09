@@ -142,3 +142,21 @@ An example is below, don’t copy this exactly.
 ## Post Development Testing
 
 Same table as above but this final testing including testing of each **success criteria** and each **usability feature** from design that you will test when the program is finished.
+
+
+> ## App Version 1:
+> ![App Version 1.png](./img/App%20Version%201.png)
+> Positives:
+>   - Invoice can be created and shown, using a web browser (so no external app must be used, e.g. PDF reader)
+>   - Calculates subtotal & Total with given factors
+>   - Shows Contact Information
+>   - Show Date & Calculates Due Date
+>
+> Improvements:
+>   - Make Logo Image Show Up
+>   - Be Able To Differentiate Product & Service - Have a section for each?
+>   - Add QR Code as link to the page
+>   - Print To PDF
+>   - Email PDF
+>   - Make Due Date timings Adjustable (not always 14 days)
+>   
