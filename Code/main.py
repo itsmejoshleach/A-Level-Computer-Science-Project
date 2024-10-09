@@ -36,8 +36,9 @@ def getitems():
         Current_Item_Name = str(input("Name of Item to add (leave blank to stop adding items): "))
         if Current_Item_Name != '': # if a Item has been provided, add it, else finish item section
             Current_Item_Number = int(input("How Many Items?: "))
-            Current_Item_Price = float(input(f"What is the price per item? (In {Currency}xxx.xx): "))
-            Current_Item_Tax = float(input("Tax % (Leave empty if not tax): "))
+            Current_Item_Price = str(float(input(f"What is the price per item? (In {Currency}xxx.xx): ")))
+            Current_Item_Tax = str(float(input("Tax % (Leave empty if not tax): ")))
+            print("\n")
             if Current_Item_Tax != '': #if Tax has been provided, add item with tax, else add without tax
                 invoice.add_item(Item(Current_Item_Number, Current_Item_Price, description=Current_Item_Name, tax=Current_Item_Tax))
             else:
