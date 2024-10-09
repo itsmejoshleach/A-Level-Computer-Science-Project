@@ -3,7 +3,7 @@
 ## What I'm making:
 I'm making a python-based invoicing software based around Sole-Traders.
 
-
+Based on: [https://practicalpython.yasoob.me/chapter3#figure-1](https://practicalpython.yasoob.me/chapter3#figure-1)
 
 ## Setup
 Install the required python packages: ```python -m pip install -r requirements```
