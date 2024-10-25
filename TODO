@@ -5,17 +5,26 @@
   ☐ Usability Features:
     ☐ List usability features
     ☐ Justify my choices
-  ☐ Data Dictionary Table (Combine with Validation into one table)
+  ✔ Data Dictionary Table (Combine with Validation into one table) @done(24-10-18 14:04)
   ☐ Validation (Combine with data dictionary into one table)
   ☐ Iterative Test Table
   ☐ Post Development Testing
 
   ☐ Code:
-    ☐ Make Logo Image Show Up
-    ☐ Be Able To Differentiate Product & Service - Have a section for each?
-    ☐ Add QR Code as link to the page
-    ☐ Print To PDF
-    ☐ Email PDF
-    ☐ Make Due Date timings Adjustable (not always 14 days)
-    ☐ Add Favicon
-    ☐ Redo Title (Dynamic - "ProviderCompany - Invoice - DD-MM-YYYY")
+    ☐ Version 2:
+      ✔ Make Logo Image Show Up @done(24-10-25 10:46)
+      ✔ Be Able To Differentiate Product & Service - Have a section for each? @done(24-10-25 11:11)
+      ☐ Print To PDF
+    ☐ Version 3:
+      ☐ GUI
+        ☐ Menus
+        ☐ Main Text Box Data Inputs
+        ☐ Logo File Upload Input? / Image Path Input (File chooser)
+    ☐ Version 4:
+      ☐ Email PDF
+      ☐ Add Favicon
+      ☐ Make Due Date timings Adjustable (not always 14 days)
+      ☐ Redo Title (Dynamic - "ProviderCompany - Invoice - DD-MM-YYYY")
+    ☐ Version 5:
+      ☐ Template Library
+      ☐ Custom Template Uploads
