@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Your Invoice</title>
-  
+  <link rel="icon" type="image/x-icon" href="static/img/favicon.ico">
+
   <style>
   @page {
     size: a4 portrait;
@@ -118,7 +119,8 @@
           <table>
             <tr>
               <td class="title">
-                <img src={{Provider['Logo_Path']}} style="height: 100px;">
+                <!-- <img src={{Provider['Logo_Path']}} style="height: 100px;">-->
+                <img src="{{ url_for('static', filename= 'img/Logo.jpg' ) }}" />
               </td>
               <td>
                 <strong>Invoice #:</strong> {{Invoice_Number}}<br>

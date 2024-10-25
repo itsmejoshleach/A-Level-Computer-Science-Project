@@ -11,16 +11,10 @@ app = Flask(__name__)
 Currency = os.getenv('Currency')
 #Currency_Code = os.getenv('Currency_Code')
 
-this_directory = os.path.dirname(os.path.realpath(__file__))
-parent_directory = os.path.split("Code")
-parent_directory = this_directory.replace(parent_directory[1], '')
-img_directory = os.path.join(parent_directory, 'img')
 
 
 Provider = { # Provider details, as a dictionary
     "Name": os.getenv('Provider_Name'),
-    #"Logo_Path": os.getenv('Provider_Logo_Path'),
-    "Logo_Path": os.path.join(img_directory, 'Logo.jpg'),
     "Contact_Phone_Number": os.getenv('Provider_Contact_Phone_Number'),
     "Contact_Email": os.getenv('Provider_Contact_Email'),
     "Address_1": os.getenv('Provider_Contact_Address_1'),
