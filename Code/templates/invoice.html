@@ -151,13 +151,13 @@
       </tr>
       <tr class="heading">
         <td>
-          Item
+          Product Item
         </td>
         <td>
           Price Per Item
         </td>
         <td>
-          Number
+          Number of Items
         </td>
         <td>
           Tax
@@ -167,8 +167,47 @@
         </td>
       </tr>
 
-      {% for Item in Items %}
-      <tr class="item">
+      {% for Item in ProductItems %} <!--Products For Loop-->
+      <tr class="product_items">
+        <td>
+          {{Item['title']}}
+        </td>
+        <td>
+          {{Currency}}{{Item['charge_per_item']}}
+        </td>
+        <td>
+          {{Item['item_number']}}
+        </td>
+        <td>
+          {{Item['tax']}}%
+        </td>
+        <td>
+          {{Currency}}{{Item['subtotal']}}
+        </td>
+      </tr>
+      {% endfor %}
+
+
+      <tr class="heading">
+        <td>
+          Service Item
+        </td>
+        <td>
+          Price Per Hour
+        </td>
+        <td>
+          Total Hours
+        </td>
+        <td>
+          Tax
+        </td>
+        <td>
+          Subtotal
+        </td>
+      </tr>
+
+      {% for Item in ServiceItems %} <!--Services For Loop-->
+      <tr class="service_items">
         <td>
           {{Item['title']}}
         </td>

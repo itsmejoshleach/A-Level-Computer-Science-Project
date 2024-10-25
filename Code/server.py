@@ -31,7 +31,7 @@ Customer = { # customer details, as a dictionary
     "Handler_Email": "hello@TestCustomer.com"
 }
 
-Items = [ # items, as a dictionary (subtotals blank at this point)
+ProductItems = [ # items, as a dictionary (subtotals blank at this point)
     {
         'title': 'Product1',
         'charge_per_item': '30.00',
@@ -48,6 +48,29 @@ Items = [ # items, as a dictionary (subtotals blank at this point)
     },
     {
         'title': 'Product3',
+        'charge_per_item': '52.00',
+        'item_number': '5',
+        'tax': '10',
+        'subtotal': ''
+    }
+]
+ServiceItems = [
+    {
+        'title': 'Service1',
+        'charge_per_item': '30.00',
+        'item_number': '10',
+        'tax': '15',
+        'subtotal': ''
+    },
+    {
+        'title': 'Service2',
+        'charge_per_item': '45.00',
+        'item_number': '12',
+        'tax': '20',
+        'subtotal': ''
+    },
+    {
+        'title': 'Service3',
         'charge_per_item': '52.00',
         'item_number': '5',
         'tax': '10',
@@ -102,15 +125,18 @@ def getduedate(daystilldue): # get due date when given days from now in form DD-
 
 @app.route('/') # on main page '/' render the invoice template
 def hello_world():
-    findsubtotals(Items) # populate the subtotals
+    findsubtotals(ProductItems) # populate the subtotals
+    findsubtotals(ServiceItems) # populate the subtotals
+    overalltotal = findtotal(ProductItems) + findtotal(ServiceItems)
     return render_template('invoice.html',
                            Date=getcurrentdate(), # Pass through current date
                            Invoice_Number = Invoice_Number, # PAss through invoice number
                            Due_Date=getduedate(14), # pass through Due date (14 days from current date)
                            Provider=Provider, # pass through provider details
                            Customer=Customer, # pass through customer details
-                           Items=Items, # pass through items
-                           Total=findtotal(Items), # pass through total
+                           ProductItems=ProductItems,
+                           ServiceItems=ServiceItems,
+                           Total=overalltotal, # pass through total
                            Currency=Currency # pass through currency sign
     ) # render html template with all variables passed through
 
