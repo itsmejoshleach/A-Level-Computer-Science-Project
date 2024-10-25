@@ -6,7 +6,9 @@ I'm making a python-based invoicing software based around Sole-Traders.
 Based on: [https://practicalpython.yasoob.me/chapter3#figure-1](https://practicalpython.yasoob.me/chapter3#figure-1)
 
 ## Setup
-Install the required python packages: ```python -m pip install -r requirements```
+- Install the required python packages: ```python -m pip install -r requirements```
+- Assumes The Provider (Seller)'s Logo is located `static/img/Logo.jpg`
+- - Assumes The Provider (Seller)'s Logo is located `static/img/favicon.ico`
 
 
 ## Template Design:
@@ -20,7 +22,6 @@ Install the required python packages: ```python -m pip install -r requirements``
 
 #### Provider:
   - ```{{Provider['Name']}}``` - Provider Name
-  - ```{{Provider['Logo_Path']}}``` - Provider Logo Image Path
   - ```{{Provider['Contact_Email']}}``` - Provider Contact Email
   - ```{{Provider['Contact_Phone_Number']}}``` - Provider Contact Phone Number
   - ```{{Provider['Address_1']}}``` - Provider Address (1st Line)
