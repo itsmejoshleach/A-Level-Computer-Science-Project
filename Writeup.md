@@ -159,4 +159,15 @@ Same table as above but this final testing including testing of each **success c
 >   - Print To PDF
 >   - Email PDF
 >   - Make Due Date timings Adjustable (not always 14 days)
->   
+
+> ## App Version 2:
+> ![App Version 2.png](./img/App%20Version%202.png)
+> Positives:
+>   - Logo image now shows up
+>   - Products and Services are now defined and shown seperately
+>   - PDF can be downloaded
+>
+> Improvements:
+>   - Enter data in each time (and keep some data persistant)
+>   - Logo File Upload
+>   - GUI Menus for entering data

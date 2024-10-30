@@ -22,7 +22,7 @@
         ☐ Logo File Upload Input? / Image Path Input (File chooser)
     ☐ Version 4:
       ☐ Email PDF
-      ☐ Add Favicon
+      ✔ Add Favicon @done(24-10-30 16:46)
       ☐ Make Due Date timings Adjustable (not always 14 days)
       ☐ Redo Title (Dynamic - "ProviderCompany - Invoice - DD-MM-YYYY")
     ☐ Version 5:
