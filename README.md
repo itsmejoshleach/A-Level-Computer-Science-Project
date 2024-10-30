@@ -7,6 +7,7 @@ Based on: [https://practicalpython.yasoob.me/chapter3#figure-1](https://practica
 
 ## Setup
 - Install the required python packages: ```python -m pip install -r requirements```
+- Install the required packages: ```sudo apt-get install wkhtmltopdf```
 - Assumes The Provider (Seller)'s Logo is located `static/img/Logo.jpg`
 - - Assumes The Provider (Seller)'s Logo is located `static/img/favicon.ico`
 
