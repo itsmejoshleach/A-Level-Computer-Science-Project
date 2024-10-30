@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 import os # os integration library
 from dotenv import load_dotenv # .env usage library
 from datetime import date, timedelta, time # library for  dates & times
+import pdfkit # html -> pdf
 
 load_dotenv() # load the .env file
 app = Flask(__name__)
@@ -11,7 +12,7 @@ app = Flask(__name__)
 Currency = os.getenv('Currency')
 #Currency_Code = os.getenv('Currency_Code')
 
-
+Invoice_Path = os.getenv('Invoice_Path')
 
 Provider = { # Provider details, as a dictionary
     "Name": os.getenv('Provider_Name'),
@@ -44,7 +45,6 @@ ProductItems = [ # items, as a dictionary (subtotals blank at this point)
         'charge_per_item': '45.00',
         'item_number': '12',
         'tax': '20',
-        'subtotal': ''
     },
     {
         'title': 'Product3',
@@ -78,7 +78,7 @@ ServiceItems = [
     }
 ]
 
-Invoice_Number = "000001" # invoice number
+Invoice_Number = "000001" # invoice number'
 
 def percentageof(percentage, number): # provide percentage and whole, returns calculated answer, e.g. percentageof(4,100) will return 4
     percent_calc = (int(percentage) * int(number)) / 100
@@ -100,8 +100,8 @@ def findtotal(Items): # find the overall total of all items (including tax)
     for item in Items: # for each item
         total_with_tax, total_without_tax = 0,0 # reset temp totals to 0
         total_without_tax = float(item['charge_per_item']) * float(item['item_number']) # charge per item times by number of items gives tax-free total
-        total_with_tax = total_without_tax + percentageof(item['tax'], total_without_tax) # use function to calculate percentage and add it on top of total
-        running_total = running_total + int(total_with_tax) # add to running total
+        total_with_tax = total_without_tax + percentageof(item['tax'], total_without_tax) # use function to calculate percentage and add it on top of subtotal
+        running_total = running_total + total_with_tax
     return running_total
 
 def formatdate(Unformatted_Date): # give it a YYYY-MM-DD date and it returns a DD-MM-YYYY date
@@ -124,7 +124,7 @@ def getduedate(daystilldue): # get due date when given days from now in form DD-
     return Due_Date_Formatted
 
 @app.route('/') # on main page '/' render the invoice template
-def hello_world():
+def index():
     findsubtotals(ProductItems) # populate the subtotals
     findsubtotals(ServiceItems) # populate the subtotals
     overalltotal = findtotal(ProductItems) + findtotal(ServiceItems)
@@ -139,6 +139,12 @@ def hello_world():
                            Total=overalltotal, # pass through total
                            Currency=Currency # pass through currency sign
     ) # render html template with all variables passed through
+
+@app.route('/download')
+def download():
+    pdfkit.from_url('http://127.0.0.1:8080', Invoice_Path) # makepdf
+    return send_file(Invoice_Path, as_attachment=True)
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8080))
