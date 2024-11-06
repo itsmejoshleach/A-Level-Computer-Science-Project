@@ -1,3 +1,4 @@
 python-dotenv # for dealing with .env files
 weasyprint # pdf printing
 flask # html hosting
+Tkinter # GUI
