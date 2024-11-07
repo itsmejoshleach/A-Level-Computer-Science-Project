@@ -171,3 +171,11 @@ Same table as above but this final testing including testing of each **success c
 >   - Enter data in each time (and keep some data persistant)
 >   - Logo File Upload
 >   - GUI Menus for entering data
+
+> ## App Version 3:
+> ![App Version 3 - Dev Sketch.drawio.png](./img/Version%203%20-%20Dev%20Sketch.drawio.png)
+> ![App Version 3.png](./img/App%20Version%203.png)
+> Positives:
+>   - Has a intuitive GUI to input data.
+> Negatives:
+>   - Not all functions work - e.g. Templates page
