@@ -123,11 +123,13 @@ Hardware & Software Requirements:
 
 ## Data Dictionary Table
 
-~~| Variable name | Datatype | Description | Validation |~~
-~~| --- | --- | --- | --- |~~
-~~|     |     |     |     |~~
-~~|     |     |     |     |~~
-~~|     |     |     |     |~~
+| Variable name | Size / Value | Datatype | Description | Validation |
+| --- | --- | --- | --- | --- |
+|Invoice Number|000001|String|Invoice ID number|6 Digits|
+|Currency_Code|GBP|String|International currency code|3 Digit Currency code|
+|Provider[Bank_Account_Number]|12345678|Integer|Provider's Bank Account Number| Must be 8 chars|
+|Customer Hanndler Email|sales@customer.com|string|Customer Sales Handlers email|Must be in the format x@y.z|
+|Product Title|Product1|string|Product Title|Must be plain-text string|
 
 ## Validation
 
