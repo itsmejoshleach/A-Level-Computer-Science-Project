@@ -5,7 +5,8 @@
   ☐ Usability Features:
     ☐ List usability features
     ☐ Justify my choices
-  ✔ Data Dictionary Table (Combine with Validation into one table) @done(24-10-18 14:04)
+  ☐ Data Dictionary Table (Combine with Validation into one table)
+    ☐ Add more datatypes (functions, classes, imports as func, imports as class)
   ☐ Validation (Combine with data dictionary into one table)
   ☐ Iterative Test Table
   ☐ Post Development Testing
@@ -20,6 +21,10 @@
         ☐ Menus
         ☐ Main Text Box Data Inputs
         ☐ Logo File Upload Input? / Image Path Input (File chooser)
+        ☐ Add validation
+          ☐ Currency Code: must be 3 digits and string
+          ☐ Provider[Bank_Account_Number]: must be 8 digits and integer
+          ☐ Customer Handler Email: must be an email (must contain '@' and '.domain' and be in the format 'x@y.z')
     ☐ Version 4:
       ☐ Email PDF
       ✔ Add Favicon @done(24-10-30 16:46)
