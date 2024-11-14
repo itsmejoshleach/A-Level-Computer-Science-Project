@@ -44,10 +44,10 @@ In my app, the user needs to enter products and services and use templates to fo
 
 Essential Features:
 
-- The software needs to have the ability to create PDF invoices, that can then be sent to clients.
-- It must be easy to use as an app.
-- It must have the ability to add branding, and/or customize the look of the invoice
-- It must be able to invoice for products to for services.
+  The software needs to have the ability to create PDF invoices, that can then be sent to clients. This means it must be formatted nicely.
+  It must be easy to use and intuitive to use the app. - This means easily recognisable symbols and menu labels.
+  It must have the ability to add custom branding, and/or customise the look of te invoice. This means custom Logo's, custom colours and/or custom templates.
+  The invoice must work for both products and services.
 
 Limitations:
 
@@ -56,10 +56,14 @@ Limitations:
 - It won’t be able to directly take payments
 
 Hardware & Software Requirements:
-
-My software will need a CPU to do the processing, Primary Storage, such as RAM, for storing the program, Secondary Storage for storage of data.
-
-Software; Python isn’t needed to run the app. As it will made into an executable. But a browser will be required to download the app.
+  As there is no movement or complicated computation functions, limited overhead is needed. These are the minimum recommended requirements:
+  For the hardware requirements of my app, the user will need to have at least 2.5Ghz, this is because the average is 3Ghz of CPU speed on modern computers, so setting the minimum requirements to below the average allows older devices to run the app at optimal speeds.
+  2Gb of RAM is recommended as the app will serve the webpage from RAM, it allows plenty of room for the app to run, and all the additional content (extra branding files) to be shown.
+  Python must be install on the system, all app functionality has been tested up to 3.12.7, however other versions may work, with the required packages installed (as outlined in the README of the project). These should be the listed versions to ensure compatibility with each other.
+  The device must have an operating system installed so that the user can interact with python.
+  The device must have an operating system to show the Invoicing software
+  An internet connection is recommended to download the app, however it is not required for running of the application.
+  The user may require external hardware, such as a keyboard to input the details, mouse as to interact with the setup GUI and screen to interact with the app.
 
 ---
 ---
@@ -111,37 +115,37 @@ Software; Python isn’t needed to run the app. As it will made into an executab
 > [Pseudocode.md](./Pseudocode.md)
 
 > ### Sketch / draw screens of your game – (not actual game/program) / program and label
-> ![App Sketch.png](./img/App%20Sketch.drawio.png)
+> ~~![App Sketch.png](./img/App%20Sketch.drawio.png)~~
 
 ## Usability Features
 
-Create a list of usability features and justify the choices. E.g., The way the menu works, the display, the controls. Possible paragraphs you might have are: Navigation, consistency, user feedback, visual clarity, efficiency, flexibility and error prevention.
+~~Create a list of usability features and justify the choices. E.g., The way the menu works, the display, the controls. Possible paragraphs you might have are: Navigation, consistency, user feedback, visual clarity, efficiency, flexibility and error prevention.~#
 
 ## Data Dictionary Table
 
-| Variable name | Datatype | Description | Validation |
-| --- | --- | --- | --- |
-|     |     |     |     |
-|     |     |     |     |
-|     |     |     |     |
+~~| Variable name | Datatype | Description | Validation |~~
+~~| --- | --- | --- | --- |~~
+~~|     |     |     |     |~~
+~~|     |     |     |     |~~
+~~|     |     |     |     |~~
 
 ## Validation
 
-Describe how you will enter that data entered is reasonable. E.g. restrictions the options they can choose from a menu, the data they can type in as a name, the control keys they can press.
+~~Describe how you will enter that data entered is reasonable. E.g. restrictions the options they can choose from a menu, the data they can type in as a name, the control keys they can press.~~
 
 ## Iterative Test Table
 
-List all the different ways you will check each version of your game works as it should.
+~~List all the different ways you will check each version of your game works as it should.~~
 
-An example is below, don’t copy this exactly.
+~~An example is below, don’t copy this exactly.~~
 
-| Test No. | What testing & why | How testing | Test data (What is entered) e.g. left key pressed | Expected result |
-| --- | --- | --- | --- | --- |
-| 1   | Menu – ensure they can start a new game | Typing menu option | 1   | A new game should load |
+~~| Test No. | What testing & why | How testing | Test data (What is entered) e.g. left key pressed | Expected result |~~
+~~| --- | --- | --- | --- | --- |~~
+~~| 1   | Menu – ensure they can start a new game | Typing menu option | 1   | A new game should load |~~
 
 ## Post Development Testing
 
-Same table as above but this final testing including testing of each **success criteria** and each **usability feature** from design that you will test when the program is finished.
+~~Same table as above but this final testing including testing of each **success criteria** and each **usability feature** from design that you will test when the program is finished.~~
 
 
 > ## App Version 1:
