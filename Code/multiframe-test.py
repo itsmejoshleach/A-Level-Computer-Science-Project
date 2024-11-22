@@ -10,10 +10,6 @@ class tkinterApp(tk.Tk):
 	def __init__(self, *args, **kwargs):
 		# __init__ function for class Tk
 		tk.Tk.__init__(self, *args, **kwargs)
-  
-  
-  
-  
 		
 		# creating a container
 		container = tk.Frame(self)
