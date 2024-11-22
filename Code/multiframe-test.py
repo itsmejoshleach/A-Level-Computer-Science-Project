@@ -13,14 +13,14 @@ class tkinterApp(tk.Tk):
 		tk.Tk.__init__(self, *args, **kwargs)
 		
 		# creating a container
-		container = tk.Frame(self) 
-		container.pack(side = "top", fill = "both", expand = True) 
+		container = tk.Frame(self)
+		container.pack(side = "top", fill = "both", expand = True)
 
 		container.grid_rowconfigure(0, weight = 1)
 		container.grid_columnconfigure(0, weight = 1)
 
 		# initializing frames to an empty array
-		self.frames = {} 
+		self.frames = {}
 
 		# iterating through a tuple consisting
 		# of the different page layouts
@@ -29,9 +29,9 @@ class tkinterApp(tk.Tk):
 			frame = F(container, self)
 
 			# initializing frame of that object from
-			# startpage, page1, page2 respectively with 
+			# startpage, page1, page2 respectively with
 			# for loop
-			self.frames[F] = frame 
+			self.frames[F] = frame
 
 			frame.grid(row = 0, column = 0, sticky ="nsew")
 
@@ -46,7 +46,7 @@ class tkinterApp(tk.Tk):
 # first window frame startpage
 
 class StartPage(tk.Frame):
-	def __init__(self, parent, controller): 
+	def __init__(self, parent, controller):
 		tk.Frame.__init__(self, parent)
 		
 		# label of frame Layout 2
@@ -54,7 +54,7 @@ class StartPage(tk.Frame):
 		
 		# putting the grid in its place by using
 		# grid
-		label.grid(row = 0, column = 4, padx = 10, pady = 10) 
+		label.grid(row = 0, column = 4, padx = 10, pady = 10)
 
 		button1 = ttk.Button(self, text ="Page 1",
 		command = lambda : controller.show_frame(Page1))
