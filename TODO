@@ -1,10 +1,10 @@
 ☐ Design:
-  ☐ Design of Structure:
-    ☐ Decomposition Diagram
-    ☐ Pseudocode
-  ☐ Usability Features:
-    ☐ List usability features
-    ☐ Justify my choices
+  ✔ Design of Structure: @done(24-11-22 08:50)
+    ✔ Decomposition Diagram @done(24-11-22 08:50)
+    ✔ Pseudocode @done(24-11-22 08:50)
+  ✔ Usability Features: @done(24-11-22 08:50)
+    ✔ List usability features @done(24-11-22 08:50)
+    ✔ Justify my choices @done(24-11-22 08:50)
   ☐ Data Dictionary Table (Combine with Validation into one table)
     ☐ Add more datatypes (functions, classes, imports as func, imports as class)
   ☐ Validation (Combine with data dictionary into one table)

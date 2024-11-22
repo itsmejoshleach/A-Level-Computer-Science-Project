@@ -50,10 +50,9 @@ Essential Features:
   The invoice must work for both products and services.
 
 Limitations:
-
-- The software may only be able to export the PDF, not necessarily send it from within the app.
-- It may not be able to be ported to Mobile Devices for use.
-- It won’t be able to directly take payments
+  The limitations of my app is that it may only be able to export the PDF invoice, as building sharing functionality within the app is not a priority.
+  Mobile use won't be as good as desktop usage, as the sizings of the GUI and invoice will be designed for desktop computers / laptops.
+  The app won't be able to take payments, but will have the ability to add bank details, as to be able to use a BACS transfer for payment.
 
 Hardware & Software Requirements:
   As there is no movement or complicated computation functions, limited overhead is needed. These are the minimum recommended requirements:
@@ -68,7 +67,7 @@ Hardware & Software Requirements:
 ---
 ---
 
-# TLA Design
+# Design
 
 ## Decompose the problem
   User Interface:
@@ -115,11 +114,11 @@ Hardware & Software Requirements:
 > [Pseudocode.md](./Pseudocode.md)
 
 > ### Sketch / draw screens of your game – (not actual game/program) / program and label
-> ~~![App Sketch.png](./img/App%20Sketch.drawio.png)~~
+> ![Version 3 - Dev Sketch](./img/Version%203%20-%20Dev%20Sketch.drawio.png)
 
 ## Usability Features
 
-~~Create a list of usability features and justify the choices. E.g., The way the menu works, the display, the controls. Possible paragraphs you might have are: Navigation, consistency, user feedback, visual clarity, efficiency, flexibility and error prevention.~#
+The menu will work as pages of the app, with the nav menu always being shown, no matter what page your on. This adds continuity for the user, and intuitive designs make apps easier to use. The display will be divided into sections, with each one having a title that explains it, borders may be used to make it obvious where each section starts / ends. The controls will be easy to use, as there will be a call to action for submitting the data, and filling in the information will be simple. Visual clarity, e.g. using greyed out zones for unnecessary data, and highlighted zones for important, required information. There is no need for additional styling, as the app will be functional and easy to use. The flexibilty of using custom Templates for invoices, gives the user more freedom to style as wanted. There will be lots of additional data validation to reduce any errors.
 
 ## Data Dictionary Table
 
@@ -133,22 +132,21 @@ Hardware & Software Requirements:
 
 ## Validation
 
-~~Describe how you will enter that data entered is reasonable. E.g. restrictions the options they can choose from a menu, the data they can type in as a name, the control keys they can press.~~
+Data will be validated as it is parsed, this restricts what data can be inputted where. This will be done through data types, e.g. making sure that only integers are entered as the invoice number, and that only A-Z, a-z,  are entered as names. The menu will be greyed out on the current page, stopping any reloading of the current page.
 
 ## Iterative Test Table
 
-~~List all the different ways you will check each version of your game works as it should.~~
 
-~~An example is below, don’t copy this exactly.~~
-
-~~| Test No. | What testing & why | How testing | Test data (What is entered) e.g. left key pressed | Expected result |~~
-~~| --- | --- | --- | --- | --- |~~
-~~| 1   | Menu – ensure they can start a new game | Typing menu option | 1   | A new game should load |~~
+| Test No. | What testing & why | How testing | Test data (What is entered) e.g. left key pressed | Expected result |
+| --- | --- | --- | --- | --- |
+| 1   | Does the program start with no errors | Run the main python file | N/A | A cli for FLASK should begin, and a localhost invoice site should be created at 172.0.0.1:8000 |
+| 2 | Can you input data for use in the invoice | Either a GUI pops up or user input is prompted for data. | All Products, Services, Customer Attributes | Data inputted appears on the invoice, e.g. products & contact details |
+| 3 | Data validation exists | Input wrong data into data input | "QWERTYT1" inputted as InvoiceNumber | Failed as data should've been integer type |
 
 ## Post Development Testing
 
 ~~Same table as above but this final testing including testing of each **success criteria** and each **usability feature** from design that you will test when the program is finished.~~
-
+~~Done  after each version.~~
 
 > ## App Version 1:
 > ![App Version 1.png](./img/App%20Version%201.png)
@@ -165,6 +163,11 @@ Hardware & Software Requirements:
 >   - Print To PDF
 >   - Email PDF
 >   - Make Due Date timings Adjustable (not always 14 days)
+> | Test No. | What was tested | Did it succeed | why? |
+> | --- | --- | --- | --- |
+> | 1 | App starting | Yes | It opened as intended |
+> | 2 | Data input | No | Although not able to input data by users, data inputted in program |
+> | 3 | Data validation for InvoiceNumber | No | Able to be any datatype. |
 
 > ## App Version 2:
 > ![App Version 2.png](./img/App%20Version%202.png)
@@ -177,6 +180,12 @@ Hardware & Software Requirements:
 >   - Enter data in each time (and keep some data persistant)
 >   - Logo File Upload
 >   - GUI Menus for entering data
+> 
+> | Test No. | What was tested | Did it succeed | why? |
+> | --- | --- | --- | --- |
+> | 1 | App starting | Yes | It opened as intended |
+> | 2 | Data input | No | Although not able to input data by users, data inputted in program |
+> | 3 | Data validation for InvoiceNumber | No | Able to be any datatype. |
 
 > ## App Version 3:
 > ![App Version 3 - Dev Sketch.drawio.png](./img/Version%203%20-%20Dev%20Sketch.drawio.png)
@@ -185,3 +194,9 @@ Hardware & Software Requirements:
 >   - Has a intuitive GUI to input data.
 > Negatives:
 >   - Not all functions work - e.g. Templates page
+> 
+> | Test No. | What was tested | Did it succeed | why? |
+> | --- | --- | --- | --- |
+> | 1 | App starting | Yes | It opened as intended |
+> | 2 | Data input | No | Although not able to input data by users, data inputted in program |
+> | 3 | Data validation for InvoiceNumber | No | Able to be any datatype. |
