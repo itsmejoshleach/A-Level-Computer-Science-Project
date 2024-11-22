@@ -7,10 +7,13 @@ LARGEFONT =("Verdana", 35)
 class tkinterApp(tk.Tk):
 	
 	# __init__ function for class tkinterApp 
-	def __init__(self, *args, **kwargs): 
-		
+	def __init__(self, *args, **kwargs):
 		# __init__ function for class Tk
 		tk.Tk.__init__(self, *args, **kwargs)
+  
+  
+  
+  
 		
 		# creating a container
 		container = tk.Frame(self)
@@ -48,7 +51,6 @@ class tkinterApp(tk.Tk):
 class StartPage(tk.Frame):
 	def __init__(self, parent, controller):
 		tk.Frame.__init__(self, parent)
-		
 		# label of frame Layout 2
 		label = ttk.Label(self, text ="Startpage", font = LARGEFONT)
 		
@@ -78,7 +80,6 @@ class StartPage(tk.Frame):
 class Page1(tk.Frame):
 	
 	def __init__(self, parent, controller):
-		
 		tk.Frame.__init__(self, parent)
 		label = ttk.Label(self, text ="Page 1", font = LARGEFONT)
 		label.grid(row = 0, column = 4, padx = 10, pady = 10)
@@ -88,7 +89,7 @@ class Page1(tk.Frame):
 		button1 = ttk.Button(self, text ="StartPage",
 							command = lambda : controller.show_frame(StartPage))
 	
-		# putting the button in its place 
+		# putting the button in its place
 		# by using grid
 		button1.grid(row = 1, column = 1, padx = 10, pady = 10)
 
@@ -97,7 +98,7 @@ class Page1(tk.Frame):
 		button2 = ttk.Button(self, text ="Page 2",
 							command = lambda : controller.show_frame(Page2))
 	
-		# putting the button in its place by 
+		# putting the button in its place by
 		# using grid
 		button2.grid(row = 2, column = 1, padx = 10, pady = 10)
 
