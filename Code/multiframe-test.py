@@ -5,16 +5,12 @@ from tkinter import ttk
 LARGEFONT =("Verdana", 35)
 
 class tkinterApp(tk.Tk):
-	
-	# __init__ function for class tkinterApp 
-	def __init__(self, *args, **kwargs):
-		# __init__ function for class Tk
-		tk.Tk.__init__(self, *args, **kwargs)
-		
+	def __init__(self, *args, **kwargs): # __init__ function for class tkinterApp
+		tk.Tk.__init__(self, *args, **kwargs) # __init__ function for class Tk
+
 		# creating a container
 		container = tk.Frame(self)
 		container.pack(side = "top", fill = "both", expand = True)
-
 		container.grid_rowconfigure(0, weight = 1)
 		container.grid_columnconfigure(0, weight = 1)
 
@@ -23,12 +19,12 @@ class tkinterApp(tk.Tk):
 
 		# iterating through a tuple consisting
 		# of the different page layouts
-		for F in (StartPage, Page1, Page2):
+		for F in (StartPage, ConsumerPage, SupplierPage):
 
 			frame = F(container, self)
 
 			# initializing frame of that object from
-			# startpage, page1, page2 respectively with
+			# startpage, ConsumerPage, SupplierPage respectively with
 			# for loop
 			self.frames[F] = frame
 
@@ -43,88 +39,63 @@ class tkinterApp(tk.Tk):
 		frame.tkraise()
 
 # first window frame startpage
-
 class StartPage(tk.Frame):
 	def __init__(self, parent, controller):
 		tk.Frame.__init__(self, parent)
 		# label of frame Layout 2
 		label = ttk.Label(self, text ="Startpage", font = LARGEFONT)
-		
-		# putting the grid in its place by using
-		# grid
+
+		# putting the grid in its place by using grid
 		label.grid(row = 0, column = 4, padx = 10, pady = 10)
 
-		button1 = ttk.Button(self, text ="Page 1",
-		command = lambda : controller.show_frame(Page1))
-	
-		# putting the button in its place by
-		# using grid
-		button1.grid(row = 1, column = 1, padx = 10, pady = 10)
+  # button to show Consumer Page with text
+		button1 = ttk.Button(self, text ="Consumer Page",
+							command = lambda : controller.show_frame(ConsumerPage))
+		button1.grid(row = 1, column = 1, padx = 10, pady = 10) # putting the button in its place
 
-		## button to show frame 2 with text layout2
-		button2 = ttk.Button(self, text ="Page 2",
-		command = lambda : controller.show_frame(Page2))
-	
-		# putting the button in its place by
-		# using grid
-		button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-
-		
+		# button to show Supplier Page with text
+		button2 = ttk.Button(self, text ="Supplier Page",
+							command = lambda : controller.show_frame(SupplierPage))
+		button2.grid(row = 2, column = 1, padx = 10, pady = 10) # putting the button in its place by using grid
 
 
-# second window frame page1 
-class Page1(tk.Frame):
+# second window frame ConsumerPage
+class ConsumerPage(tk.Frame):
 	
 	def __init__(self, parent, controller):
 		tk.Frame.__init__(self, parent)
-		label = ttk.Label(self, text ="Page 1", font = LARGEFONT)
+		label = ttk.Label(self, text ="Consumer Page", font = LARGEFONT)
 		label.grid(row = 0, column = 4, padx = 10, pady = 10)
 
-		# button to show frame 2 with text
-		# layout2
+		# button to show StartPage with text
 		button1 = ttk.Button(self, text ="StartPage",
 							command = lambda : controller.show_frame(StartPage))
-	
-		# putting the button in its place
-		# by using grid
-		button1.grid(row = 1, column = 1, padx = 10, pady = 10)
+		button1.grid(row = 1, column = 1, padx = 10, pady = 10) # putting the button in its place
 
-		# button to show frame 2 with text
-		# layout2
-		button2 = ttk.Button(self, text ="Page 2",
-							command = lambda : controller.show_frame(Page2))
-	
-		# putting the button in its place by
-		# using grid
-		button2.grid(row = 2, column = 1, padx = 10, pady = 10)
+		# button to show Supplier Page with text
+		button2 = ttk.Button(self, text ="Supplier Page",
+							command = lambda : controller.show_frame(SupplierPage))
+		button2.grid(row = 2, column = 1, padx = 10, pady = 10) # putting the button in its place by using grid
 
 
 
 
-# third window frame page2
-class Page2(tk.Frame): 
+# third window frame SupplierPage
+class SupplierPage(tk.Frame): 
 	def __init__(self, parent, controller):
 		tk.Frame.__init__(self, parent)
-		label = ttk.Label(self, text ="Page 2", font = LARGEFONT)
+		label = ttk.Label(self, text ="Supplier Page", font = LARGEFONT)
 		label.grid(row = 0, column = 4, padx = 10, pady = 10)
 
-		# button to show frame 2 with text
-		# layout2
-		button1 = ttk.Button(self, text ="Page 1",
-							command = lambda : controller.show_frame(Page1))
-	
-		# putting the button in its place by 
-		# using grid
-		button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-
-		# button to show frame 3 with text
-		# layout3
-		button2 = ttk.Button(self, text ="Startpage",
+		# button to show StartPage with text
+		button1 = ttk.Button(self, text ="StartPage",
 							command = lambda : controller.show_frame(StartPage))
-	
-		# putting the button in its place by
-		# using grid
-		button2.grid(row = 2, column = 1, padx = 10, pady = 10)
+		button1.grid(row = 1, column = 1, padx = 10, pady = 10) # putting the button in its place
+
+		# button to show Consumer Page with text
+		button2 = ttk.Button(self, text ="Consumer Page",
+							command = lambda : controller.show_frame(ConsumerPage))
+		button2.grid(row = 2, column = 1, padx = 10, pady = 10) # putting the button in its place by using grid
 
 
 # Driver Code
