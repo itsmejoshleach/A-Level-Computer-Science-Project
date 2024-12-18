@@ -51,10 +51,10 @@ Essential Features:
 
 Limitations:
 
-  I am limited by time, this means that User testing will not be as in depth as it could be. I am limited by research time and resources, this may mean features that users may want must be added later.
-  The limitations of my app is that it may only be able to export the PDF invoice, as building sharing functionality within the app is not a priority.
-  Mobile use won't be as good as desktop usage, as the sizings of the GUI and invoice will be designed for desktop computers / laptops.
-  The app won't be able to take payments, but will have the ability to add bank details, as to be able to use a BACS transfer for payment.
+  I am limited by time, this means that User testing will not be as in depth as it could be. I am limited by research time and resources, this may mean features that users may want must be added later. I am going to plan my schedule using a gantt chart to use my time efficiently.
+  The limitations of my app is that it may only be able to export the PDF invoice, as building sharing functionality within the app is not a priority. I will overcome this by using pre-built libraries to add downloading and sharing functionality.
+  Mobile use won't be as good as desktop usage, as the sizings of the GUI and invoice will be designed for desktop computers / laptops. I will overcome this by using a reactive HTML template so that any sized screen can be accomodated for.
+  The app won't be able to take payments, but will have the ability to add bank details, as to be able to use a BACS transfer for payments.
 
 Hardware & Software Requirements:
   As there is no movement or complicated computation functions, limited overhead is needed. These are the minimum recommended requirements:
@@ -66,9 +66,13 @@ Hardware & Software Requirements:
   An internet connection is recommended to download the app, however it is not required for running of the application.
   The user may require external hardware, such as a keyboard to input the details, mouse as to interact with the setup GUI and screen to interact with the app.
 
-
-~~## Success Criteria~~
-~~ Look at examples.~~
+## Success Criteria
+| Success Criteria | Grade for success | Reason | Result | Measured by? |
+| User Friendliness | 8/10 (Important) | the app is to be catered towards business owners / sole traders, who may not be It literate, so being clear and easy to use is important. | | Ask users to take a survey|
+| Ease of use | 10/10 (Vital) | The program to be easy to use and not have complex functionality, as may be too advanced for some users | | Ask users to take a survey|
+| Functional and working inputs / outputs | 10/10 (Vital) | This includes saved variables and/or inputted data, output in a readable format. | | No errors on breakpoint testing |
+| Smooth functionality | 9/10 (Important) | Improves user experience and general performance, the smaller and more efficient the program is the better end-user experience functionality the program will give. | | Ask users to take a survey |
+| User usefulness | 7/10 | Means that users want to use the program and have a better experience | | Ask users to take a survey |
 ---
 ---
 
@@ -154,6 +158,12 @@ Data will be validated as it is parsed, this restricts what data can be inputted
 
 
 ~~## Post Development Testing / success criteria~~
+| Success Criteria | Grade for success | Reason | Result | Measured by? |
+| User Friendliness | 8/10 (Important) | the app is to be catered towards buisness owners / sole traders, who may not be It literate, so being clear and easy to use is important. | | Ask users to take a survey|
+| Ease of use | 10/10 (Vital) | The program to be easy to use and not have complex functionality, as may be too advanced for some users | | Ask users to take a survey|
+| Functional and working inputs / outputs | 10/10 (Vital) | This includes saved variables and/or inputted data, output in a readable format. | | No errors on breakpoint testing |
+| Smooth functionality | 9/10 (Important) | Improves user experience and general performance, the smaller and more efficient the program is the better end-user experience functionality the program will give. | | Ask users to take a survey |
+| User usefulness | 7/10 | Means that users want to use the program and have a better experience | | Ask users to take a survey |
 
 ~~Same table as above but this final testing including testing of each **success criteria** and each **usability feature** from design that you will test when the program is finished.~~
 ~~Done  after each version.~~
