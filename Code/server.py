@@ -130,7 +130,24 @@ def index():
     overalltotal = findtotal(ProductItems) + findtotal(ServiceItems)
     return render_template('invoice.html',
                            Date=getcurrentdate(), # Pass through current date
-                           Invoice_Number = Invoice_Number, # PAss through invoice number
+                           Invoice_Number = Invoice_Number, # Pass through invoice number
+                           Due_Date=getduedate(14), # pass through Due date (14 days from current date)
+                           Provider=Provider, # pass through provider details
+                           Customer=Customer, # pass through customer details
+                           ProductItems=ProductItems,
+                           ServiceItems=ServiceItems,
+                           Total=overalltotal, # pass through total
+                           Currency=Currency # pass through currency sign
+    ) # render html template with all variables passed through
+
+@app.route('/downloadinvoice') # on main page '/downloadinvoice' render the downloadinvoice template (No download button)
+def indedownloadinvoice():
+    findsubtotals(ProductItems) # populate the subtotals
+    findsubtotals(ServiceItems) # populate the subtotals
+    overalltotal = findtotal(ProductItems) + findtotal(ServiceItems)
+    return render_template('downloadinvoice.html',
+                           Date=getcurrentdate(), # Pass through current date
+                           Invoice_Number = Invoice_Number, # Pass through invoice number
                            Due_Date=getduedate(14), # pass through Due date (14 days from current date)
                            Provider=Provider, # pass through provider details
                            Customer=Customer, # pass through customer details
@@ -142,7 +159,7 @@ def index():
 
 @app.route('/download')
 def download():
-    pdfkit.from_url('http://127.0.0.1:8080', Invoice_Path) # makepdf
+    pdfkit.from_url('http://127.0.0.1:8080/downloadinvoice', Invoice_Path) # makepdf
     return send_file(Invoice_Path, as_attachment=True)
 
 

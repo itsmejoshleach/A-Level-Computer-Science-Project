@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Your Invoice</title>
+  <link rel="icon" type="image/x-icon" href="static/img/favicon.ico">
+  <link rel="stylesheet" href="static/invoice.css">
+</head>
+
+<body>
+  <div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="top">
+        <td colspan="5">
+          <table>
+            <tr>
+              <td class="title">
+                <!-- <img src={{Provider['Logo_Path']}} style="height: 100px;">-->
+                <img src="{{ url_for('static', filename= 'img/Logo.jpg' ) }}" />
+              </td>
+              <td>
+                <strong>Invoice #:</strong> {{Invoice_Number}}<br>
+                <strong>Created:</strong> {{Date}}<br>
+                <strong>Due:</strong> {{Due_Date}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="information">
+        <td colspan="5">
+          <table>
+            <tr>
+              <td>
+                {{Provider['Name']}}<br>
+                {{Provider['Address_1']}}<br>
+                {{Provider['Address_2']}}
+              </td>
+              <td>
+                {{Customer['Company_Name']}}<br>
+                {{Customer['Handler_Name']}}<br>
+                {{Customer['Handler_Email']}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="heading">
+        <td>
+          Product Item
+        </td>
+        <td>
+          Price Per Item
+        </td>
+        <td>
+          Number of Items
+        </td>
+        <td>
+          Tax
+        </td>
+        <td>
+          Subtotal
+        </td>
+      </tr>
+
+      {% for Item in ProductItems %} <!--Products For Loop-->
+      <tr class="product_items">
+        <td>
+          {{Item['title']}}
+        </td>
+        <td>
+          {{Currency}}{{Item['charge_per_item']}}
+        </td>
+        <td>
+          {{Item['item_number']}}
+        </td>
+        <td>
+          {{Item['tax']}}%
+        </td>
+        <td>
+          {{Currency}}{{Item['subtotal']}}
+        </td>
+      </tr>
+      {% endfor %}
+
+
+      <tr class="heading">
+        <td>
+          Service Item
+        </td>
+        <td>
+          Price Per Hour
+        </td>
+        <td>
+          Total Hours
+        </td>
+        <td>
+          Tax
+        </td>
+        <td>
+          Subtotal
+        </td>
+      </tr>
+
+      {% for Item in ServiceItems %} <!--Services For Loop-->
+      <tr class="service_items">
+        <td>
+          {{Item['title']}}
+        </td>
+        <td>
+          {{Currency}}{{Item['charge_per_item']}}
+        </td>
+        <td>
+          {{Item['item_number']}}
+        </td>
+        <td>
+          {{Item['tax']}}%
+        </td>
+        <td>
+          {{Currency}}{{Item['subtotal']}}
+        </td>
+      </tr>
+      {% endfor %}
+
+      <tr class="total">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          Total: {{Currency}}{{Total}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="divFooter"></div>
+</body>
+</html>
