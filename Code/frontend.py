@@ -16,6 +16,8 @@ import tkinter as tk
 from tkinter import messagebox, filedialog, ttk
 import requests
 import os
+import re # For email validation (regex)
+from PIL import Image, ImageTk  # For displaying the logo image
 
 def send_data_to_server(data, url='http://127.0.0.1:8080/'): # Function to handle POST requests to the Flask server
     try:
@@ -72,6 +74,86 @@ def create_invoice(): # Function to create the invoice
 
     # Send data to the server to create the invoice
     send_data_to_server(data)
+
+def validate_inputs():
+    # Validate Currency Code (must be 3 uppercase/lowercase letters)
+    currency_code = provider_currency_code.get()
+    if len(currency_code) != 3 or not currency_code.isalpha():
+        messagebox.showerror("Validation Error", "Currency Code must be exactly 3 letters.")
+        return False
+    
+    # Validate Bank Account Number (must be exactly 8 digits)
+    bank_account_number = provider_bank_account_number.get()
+    if len(bank_account_number) != 8 or not bank_account_number.isdigit():
+        messagebox.showerror("Validation Error", "Bank Account Number must be exactly 8 digits.")
+        return False
+
+    # Validate Customer Handler Email
+    email = customer_handler_email.get()
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(email_regex, email):
+        messagebox.showerror("Validation Error", "Invalid email address format.")
+        return False
+    
+    return True
+
+def save_provider_data(): # Function to read and update the provider data in the .env file
+    if not validate_inputs():
+        return  # If validation fails, don't proceed
+
+    provider_data = {
+        'Provider_Name': provider_company.get(),
+        'Provider_Contact_Name': provider_handler_name.get(),
+        'Provider_Contact_Email': provider_handler_email.get(),
+        'Provider_Contact_Address_1': provider_address_line1.get(),
+        'Provider_Contact_Address_2': provider_address_line2.get(),
+        'Provider_Currency_Code': provider_currency_code.get(),
+        'Provider_Bank_Account_Number': provider_bank_account_number.get(),
+    }
+
+    try:
+        with open(".env", "a") as env_file:
+            for key, value in provider_data.items():
+                env_file.write(f"{key} = \"{value}\"\n")
+        messagebox.showinfo("Success", "Provider data saved to .env file.")
+    except Exception as e:
+        messagebox.showerror("Error", f"Error saving to .env: {e}")
+
+def load_provider_data(): # Function to read provider data from the .env file
+    if os.path.exists(".env"):
+        try:
+            with open(".env", "r") as env_file:
+                lines = env_file.readlines()
+                for line in lines:
+                    if 'Provider_Name' in line:
+                        provider_company.insert(0, line.split('=')[1].strip().replace('"', ''))
+                    elif 'Provider_Contact_Name' in line:
+                        provider_handler_name.insert(0, line.split('=')[1].strip().replace('"', ''))
+                    elif 'Provider_Contact_Email' in line:
+                        provider_handler_email.insert(0, line.split('=')[1].strip().replace('"', ''))
+                    elif 'Provider_Contact_Address_1' in line:
+                        provider_address_line1.insert(0, line.split('=')[1].strip().replace('"', ''))
+                    elif 'Provider_Contact_Address_2' in line:
+                        provider_address_line2.insert(0, line.split('=')[1].strip().replace('"', ''))
+                    elif 'Provider_Currency_Code' in line:
+                        provider_currency_code.insert(0, line.split('=')[1].strip().replace('"', ''))
+                    elif 'Provider_Bank_Account_Number' in line:
+                        provider_bank_account_number.insert(0, line.split('=')[1].strip().replace('"', ''))
+        except Exception as e:
+            messagebox.showerror("Error", f"Error reading .env file: {e}")
+
+def upload_logo():
+    file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png;*.jpg;*.jpeg")])
+    if file_path:
+        try:
+            logo_image = Image.open(file_path)
+            logo_image.thumbnail((100, 100))  # Resize logo to fit
+            logo_tk_image = ImageTk.PhotoImage(logo_image)
+            logo_label.config(image=logo_tk_image)
+            logo_label.image = logo_tk_image  # Keep a reference to the image to avoid garbage collection
+            messagebox.showinfo("Success", "Logo uploaded successfully.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Error uploading logo: {e}")
 
 # Initialize item row counter
 item_row_counter = 6  # Start from row 6 to leave space for customer data
@@ -243,6 +325,13 @@ provider_address_line2.grid(row=4, column=1)
 
 save_provider_button = tk.Button(tab_settings, text="Save Provider Data", command=save_provider_data)
 save_provider_button.grid(row=5, column=0, columnspan=2)
+
+# Add Logo Upload Button and Display Area
+upload_logo_button = tk.Button(tab_settings, text="Upload Logo", command=upload_logo)
+upload_logo_button.grid(row=8, column=0)
+
+logo_label = tk.Label(tab_settings)  # Placeholder for the logo image
+logo_label.grid(row=8, column=1)
 
 # Tab 3 - Templates
 tab_templates = tk.Frame(tab_control)

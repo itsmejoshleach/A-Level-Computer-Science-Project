@@ -18,18 +18,18 @@
       ✔ Print To PDF @done(24-10-30 16:25)
     ☐ Version 3:
       ☐ GUI
-        ☐ Menus
-        ☐ Main Text Box Data Inputs
-        ☐ Logo File Upload Input? / Image Path Input (File chooser)
-        ☐ Add validation
-          ☐ Currency Code: must be 3 digits and string
-          ☐ Provider[Bank_Account_Number]: must be 8 digits and integer
-          ☐ Customer Handler Email: must be an email (must contain '@' and '.domain' and be in the format 'x@y.z')
+        ✔ Menus @done(25-02-09 19:51)
+        ✔ Main Text Box Data Inputs @done(25-02-09 19:51)
+        ✔ Logo File Upload Input? / Image Path Input (File chooser) @done(25-02-09 20:08)
+        ✔ Add validation @done(25-02-09 20:07)
+          ✔ Currency Code: must be 3 digits and string @done(25-02-09 20:07)
+          ✔ Provider[Bank_Account_Number]: must be 8 digits and integer @done(25-02-09 20:07)
+          ✔ Customer Handler Email: must be an email (must contain '@' and '.domain' and be in the format 'x@y.z') @done(25-02-09 20:07)
     ☐ Version 4:
       ☐ Email PDF
       ✔ Add Favicon @done(24-10-30 16:46)
       ☐ Make Due Date timings Adjustable (not always 14 days)
       ☐ Redo Title (Dynamic - "ProviderCompany - Invoice - DD-MM-YYYY")
     ☐ Version 5:
-      ☐ Template Library
-      ☐ Custom Template Uploads
+      ✔ (Version 3) Template Library @done(25-02-09 19:51)
+      ✔ (Version 3) Custom Template Uploads @done(25-02-09 19:51)

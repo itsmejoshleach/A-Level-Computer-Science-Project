@@ -3,3 +3,4 @@ weasyprint # pdf printing
 flask # html hosting
 Tkinter # GUI
 requests # Web requests between front and backend
+Pillow # displaying images
