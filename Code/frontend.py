@@ -94,7 +94,7 @@ def validate_inputs():
 
     # Validate Customer Handler Email
     email = provider_handler_email.get()
-    email_regex = r'^[^@]+@[^@]+\.[^@]+'
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     if not re.match(email_regex, email):
         messagebox.showerror("Validation Error", "Invalid email address format.")
         return False
