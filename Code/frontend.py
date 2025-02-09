@@ -1,4 +1,4 @@
-# Comment Formating:
+# Comment Formatting:
 # ! 
 # ? Query
 # * Function Overview
@@ -7,7 +7,7 @@
 # Standard Comment
 
 # Prerequisites:
-# TODO: Backend server handles POST requests at http://127.00..1:8080 and creates an invoice
+# TODO: Backend server handles POST requests at http://127.0.0.1:8080 and creates an invoice
 
 
 
