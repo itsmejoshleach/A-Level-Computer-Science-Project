@@ -116,9 +116,8 @@ def save_provider_data(): # Function to read and update the provider data in the
     }
 
     try:
-        with open(".env", "a") as env_file:
-            for key, value in provider_data.items():
-                env_file.write(f"{key} = \"{value}\"\n")
+        for key, value in provider_data.items():
+            set_key(".env", key, value)  # Set environment variable in .env file
         messagebox.showinfo("Success", "Provider data saved to .env file.")
     except Exception as e:
         messagebox.showerror("Error", f"Error saving to .env: {e}")
@@ -126,71 +125,47 @@ def save_provider_data(): # Function to read and update the provider data in the
 def load_provider_data(): # Function to read provider data from the .env file
     if os.path.exists(".env"):
         try:
-            with open(".env", "r") as env_file:
-                lines = env_file.readlines()
-                for line in lines:
-                    if 'Provider_Name' in line:
-                        provider_company.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Name' in line:
-                        provider_handler_name.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Email' in line:
-                        provider_handler_email.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Address_1' in line:
-                        provider_address_line1.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Address_2' in line:
-                        provider_address_line2.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Currency_Code' in line:
-                        provider_currency_code.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Bank_Account_Number' in line:
-                        provider_bank_account_number.insert(0, line.split('=')[1].strip().replace('"', ''))
+            provider_company.insert(0, os.getenv('Provider_Name', ''))
+            provider_handler_name.insert(0, os.getenv('Provider_Contact_Name', ''))
+            provider_handler_email.insert(0, os.getenv('Provider_Contact_Email', ''))
+            provider_address_line1.insert(0, os.getenv('Provider_Contact_Address_1', ''))
+            provider_address_line2.insert(0, os.getenv('Provider_Contact_Address_2', ''))
+            provider_currency_code.insert(0, os.getenv('Provider_Currency_Code', ''))
+            provider_bank_account_number.insert(0, os.getenv('Provider_Bank_Account_Number', ''))
         except Exception as e:
             messagebox.showerror("Error", f"Error reading .env file: {e}")
 
-def load_provider_logo():
-
-    if os.path.exists(".env"):
+def load_provider_logo(): # get logo path from env
+    logo_path = os.getenv('Provider_Logo_Path', '')
+    if logo_path and os.path.exists(logo_path):  # Check if the logo file exists
         try:
-            with open(".env", "r") as env_file:
-                lines = env_file.readlines()
-                for line in lines:
-                    if 'Provider_Logo_Path' in line:
-                        logo_path = line.split('=')[1].strip().replace('"', '')
-                        if os.path.exists(logo_path):  # Check if the logo file exists
-                            logo_image = Image.open(logo_path)
-                            logo_image.thumbnail((100, 100))  # Resize logo to fit
-                            logo_tk_image = ImageTk.PhotoImage(logo_image)
-                            logo_label.config(image=logo_tk_image)
-                            logo_label.image = logo_tk_image  # Keep a reference to the image to avoid garbage collection
-                        else:
-                            messagebox.showerror("Error", "Logo file not found at the specified path.")
+            logo_image = Image.open(logo_path)
+            logo_image.thumbnail((100, 100))  # Resize logo to fit
+            logo_tk_image = ImageTk.PhotoImage(logo_image)
+            logo_label.config(image=logo_tk_image)
+            logo_label.image = logo_tk_image  # Keep a reference to the image to avoid garbage collection
         except Exception as e:
-            messagebox.showerror("Error", f"Error reading .env file: {e}")
-
+            messagebox.showerror("Error", f"Error loading logo: {e}")
+    else:
+        messagebox.showerror("Error", f"Logo file not found at the specified path: {logo_path}")
 
 def upload_logo(): # upload a new image
     file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png;*.jpg;*.jpeg")])
     if file_path:
         try:
-            # Get the path where the logo will be saved (this can be the same as current logo path or a specific folder)
-            new_logo_path = os.path.join("static", "img", os.path.basename(file_path))  # For example, save to "static/img" folder
+            new_logo_path = os.path.join("static", "img", os.path.basename(file_path))  # Example: save to "static/img" folder
 
-            # Ensure the 'logos' directory exists
-            if not os.path.exists("logos"):
-                os.makedirs("logos")
+            # Ensure the folder exists
+            if not os.path.exists("static/img"):
+                os.makedirs("static/img")
 
-            # Copy the logo to the new location
+            # Save the logo in the folder
             os.rename(file_path, new_logo_path)
 
             # Update the .env file with the new logo path
-            update_provider_logo_path(new_logo_path)
+            set_key(".env", "Provider_Logo_Path", new_logo_path)
 
-            # Display the new logo
-            logo_image = Image.open(new_logo_path)
-            logo_image.thumbnail((100, 100))  # Resize logo to fit
-            logo_tk_image = ImageTk.PhotoImage(logo_image)
-            logo_label.config(image=logo_tk_image)
-            logo_label.image = logo_tk_image  # Keep a reference to the image to avoid garbage collection
-
+            load_provider_logo()  # Reload the logo
             messagebox.showinfo("Success", "Logo uploaded successfully.")
         except Exception as e:
             messagebox.showerror("Error", f"Error uploading logo: {e}")
@@ -264,44 +239,7 @@ def add_spacer_row(): # Function to add spacer rows to ensure no overlap
     # Add a blank row (spacer) for better visual separation
     item_row_counter += 1
 
-def save_provider_data(): # Function to read and update the provider data in the .env file
-    provider_data = {
-        'Provider_Name': provider_company.get(),
-        'Provider_Contact_Name': provider_handler_name.get(),
-        'Provider_Contact_Email': provider_handler_email.get(),
-        'Provider_Contact_Address_1': provider_address_line1.get(),
-        'Provider_Contact_Address_2': provider_address_line2.get()
-    }
-
-    try:
-        with open(".env", "a") as env_file:
-            for key, value in provider_data.items():
-                env_file.write(f"{key} = \"{value}\"\n")
-        messagebox.showinfo("Success", "Provider data saved to .env file.")
-    except Exception as e:
-        messagebox.showerror("Error", f"Error saving to .env: {e}")
-
-def load_provider_data(): # Function to read provider data from the .env file
-    if os.path.exists(".env"):
-        try:
-            with open(".env", "r") as env_file:
-                lines = env_file.readlines()
-                for line in lines:
-                    if 'Provider_Name' in line:
-                        provider_company.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Name' in line:
-                        provider_handler_name.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Email' in line:
-                        provider_handler_email.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Address_1' in line:
-                        provider_address_line1.insert(0, line.split('=')[1].strip().replace('"', ''))
-                    elif 'Provider_Contact_Address_2' in line:
-                        provider_address_line2.insert(0, line.split('=')[1].strip().replace('"', ''))
-        except Exception as e:
-            messagebox.showerror("Error", f"Error reading .env file: {e}")
-
-# Function to list existing templates from the /templates directory
-def list_templates():
+def list_templates(): # Function to list existing templates from the /templates directory
     templates_list.delete(0, tk.END)
     template_files = [f for f in os.listdir("templates") if f.endswith(".html")]
     for template in template_files:
@@ -379,8 +317,16 @@ tk.Label(tab_settings, text="Provider Address (Line 2):").grid(row=4, column=0)
 provider_address_line2 = tk.Entry(tab_settings)
 provider_address_line2.grid(row=4, column=1)
 
+tk.Label(tab_settings, text="Provider Currency Code:").grid(row=5, column=0)
+provider_currency_code = tk.Entry(tab_settings)
+provider_currency_code.grid(row=5, column=1)
+
+tk.Label(tab_settings, text="Provider Bank Account Number:").grid(row=6, column=0)
+provider_bank_account_number = tk.Entry(tab_settings)
+provider_bank_account_number.grid(row=6, column=1)
+
 save_provider_button = tk.Button(tab_settings, text="Save Provider Data", command=save_provider_data)
-save_provider_button.grid(row=5, column=0, columnspan=2)
+save_provider_button.grid(row=7, column=0, columnspan=2)
 
 # Add Logo Upload Button and Display Area
 upload_logo_button = tk.Button(tab_settings, text="Upload Logo", command=upload_logo)
