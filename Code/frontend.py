@@ -18,6 +18,10 @@ import requests
 import os
 import re # For email validation (regex)
 from PIL import Image, ImageTk  # For displaying the logo image
+from dotenv import load_dotenv, set_key
+
+# load environment variables from .env file
+load_dotenv()
 
 def send_data_to_server(data, url='http://127.0.0.1:8080/'): # Function to handle POST requests to the Flask server
     try:
@@ -142,18 +146,70 @@ def load_provider_data(): # Function to read provider data from the .env file
         except Exception as e:
             messagebox.showerror("Error", f"Error reading .env file: {e}")
 
-def upload_logo():
+def load_provider_logo():
+
+    if os.path.exists(".env"):
+        try:
+            with open(".env", "r") as env_file:
+                lines = env_file.readlines()
+                for line in lines:
+                    if 'Provider_Logo_Path' in line:
+                        logo_path = line.split('=')[1].strip().replace('"', '')
+                        if os.path.exists(logo_path):  # Check if the logo file exists
+                            logo_image = Image.open(logo_path)
+                            logo_image.thumbnail((100, 100))  # Resize logo to fit
+                            logo_tk_image = ImageTk.PhotoImage(logo_image)
+                            logo_label.config(image=logo_tk_image)
+                            logo_label.image = logo_tk_image  # Keep a reference to the image to avoid garbage collection
+                        else:
+                            messagebox.showerror("Error", "Logo file not found at the specified path.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Error reading .env file: {e}")
+
+
+def upload_logo(): # upload a new image
     file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png;*.jpg;*.jpeg")])
     if file_path:
         try:
-            logo_image = Image.open(file_path)
+            # Get the path where the logo will be saved (this can be the same as current logo path or a specific folder)
+            new_logo_path = os.path.join("static", "img", os.path.basename(file_path))  # For example, save to "static/img" folder
+
+            # Ensure the 'logos' directory exists
+            if not os.path.exists("logos"):
+                os.makedirs("logos")
+
+            # Copy the logo to the new location
+            os.rename(file_path, new_logo_path)
+
+            # Update the .env file with the new logo path
+            update_provider_logo_path(new_logo_path)
+
+            # Display the new logo
+            logo_image = Image.open(new_logo_path)
             logo_image.thumbnail((100, 100))  # Resize logo to fit
             logo_tk_image = ImageTk.PhotoImage(logo_image)
             logo_label.config(image=logo_tk_image)
             logo_label.image = logo_tk_image  # Keep a reference to the image to avoid garbage collection
+
             messagebox.showinfo("Success", "Logo uploaded successfully.")
         except Exception as e:
             messagebox.showerror("Error", f"Error uploading logo: {e}")
+
+def update_provider_logo_path(new_logo_path): # write the logo image path
+    try:
+        # Read the existing .env file and update the Provider_Logo_Path
+        with open(".env", "r") as env_file:
+            lines = env_file.readlines()
+
+        with open(".env", "w") as env_file:
+            for line in lines:
+                if 'Provider_Logo_Path' in line:
+                    # Update the logo path in the .env file
+                    env_file.write(f'Provider_Logo_Path = "{new_logo_path}"\n')
+                else:
+                    env_file.write(line)
+    except Exception as e:
+        messagebox.showerror("Error", f"Error updating .env file: {e}")
 
 # Initialize item row counter
 item_row_counter = 6  # Start from row 6 to leave space for customer data
@@ -355,7 +411,8 @@ create_invoice_button.grid(row=0, column=0)
 # Finalize
 tab_control.pack(expand=1, fill="both")
 
-# Load provider data on startup
-load_provider_data()
+load_provider_data() # Load provider data on startup
+load_provider_logo() # Load provider logo on startup
+
 
 root.mainloop()
