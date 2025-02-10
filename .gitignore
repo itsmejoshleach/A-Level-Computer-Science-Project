@@ -58,3 +58,5 @@ build/
 *.env
 
 *-Invoice-*-*-*.pdf
+invoice.pdf
+*-invoice.pdf
