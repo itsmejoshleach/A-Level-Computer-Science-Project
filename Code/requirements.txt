@@ -1,5 +1,6 @@
 python-dotenv # for dealing with .env files
 flask # html hosting
-Tkinter # GUI
+#Tkinter # GUI
 requests # Web requests between front and backend
 Pillow # displaying images
+pdfkit #HTML -> PDF

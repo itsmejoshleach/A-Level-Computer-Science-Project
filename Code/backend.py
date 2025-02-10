@@ -2,11 +2,13 @@ from flask import Flask, render_template, send_file, request
 import os # os integration library
 from dotenv import load_dotenv # .env usage library
 from datetime import date, timedelta, time # library for dates & times
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
 import json
 import requests
 import pdfkit # HTML -> pdf
+
+# wkhtml Config
+path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
 
 load_dotenv() # load the .env file
 app = Flask(__name__)
@@ -143,13 +145,10 @@ def gettestinvoice():
     request_URL = 'http://127.0.0.1:8080/invoicedata'
     response = requests.post(request_URL, json=test_json_payload, headers=headers)
     data_response - response.json()
-    print(f"[LOG] - response: {response}")
-    print(f"[LOG] - response (json()): {data}")
     return data, 200
 
 @app.route('/getinvoicehtml', methods=['POST']) # Accept only POST requests, returns HTML data for invoice
 def getinvoicehtml():
-    print(f"[LOG] - POST Request Received")
     Provider, Customer, ProductItems, ServiceItems, InvoiceNumber = getpostdata(request)
     # Do the rest of the calculations (subtotals, total)
     findsubtotals(ProductItems)
@@ -168,7 +167,7 @@ def getinvoicehtml():
                             Currency=Currency)
     return invoice_html_data, 200
 
-@app.route('/writeinvoicepdf', methods=['POST'])
+@app.route('/writeinvoicepdf', methods=['POST', 'GET'])
 def writeinvoicepdf():
     Provider, Customer, ProductItems, ServiceItems, InvoiceNumber = getpostdata(request)
     # Do the rest of the calculations (subtotals, total)
@@ -176,7 +175,7 @@ def writeinvoicepdf():
     findsubtotals(ServiceItems)
     overalltotal = findtotal(ProductItems) + findtotal(ServiceItems)
 
-    invoice_html_data = render_template('invoice.html',
+    invoice_html_data = render_template('downloadinvoice.html',
                             Date=getcurrentdate(),
                             Invoice_Number=InvoiceNumber,
                             Due_Date=getduedate(14),
@@ -186,8 +185,13 @@ def writeinvoicepdf():
                             ServiceItems=ServiceItems,
                             Total=overalltotal,
                             Currency=Currency)
-    #htmltopdf(invoice_html_data, 'invoice.pdf')
-    return "Generating PDF", 200
+    
+    # Convert the HTML to a PDF using pdfkit
+    pdf_file_path = 'invoice.pdf'  # Temporary location for the PDF
+    pdfkit.from_string(invoice_html_data, pdf_file_path, configuration=config, options={"enable-local-file-access": ""})
+
+    # Send the generated PDF to the user for download
+    return send_file(pdf_file_path, as_attachment=True, download_name='invoice.pdf', mimetype='application/pdf'), 200
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8080))
