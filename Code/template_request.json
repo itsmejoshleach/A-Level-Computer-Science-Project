@@ -1,0 +1,69 @@
+{
+    "Provider": {
+        "Name": "ProviderCompany",
+        "Phone_Number": "+12 3456789101",
+        "Email": "hello@ProviderCompany.com",
+        "Address_1": "Fakebuilding, FakeRoad",
+        "Address_2": "FakeTown, FakeCountry, FakePostcode",
+        "Bank_Account_Number": "12345678",
+        "Bank_Sort_Code": "123456",
+        "Logo_Path": "./static/img/Logo.jpg"
+    },
+    "Customer" : {
+        "Company_Name": "TestCustomer",
+        "Handler_Name": "Jeff Goodwell",
+        "Address_1": "AnotherFakebuilding, AnotherFakeRoad",
+        "Address_2": "AnotherFakeTown, AnotherFakeCountry, AnotherFakePostcode",
+        "Handler_Email": "hello@TestCustomer.com"
+    },
+    "ProductItems": [
+        {
+            "title": "Product1",
+            "charge_per_item": "30.00",
+            "item_number": "10",
+            "tax": "15",
+            "subtotal": ""
+        },
+        {
+            "title": "Product2",
+            "charge_per_item": "45.00",
+            "item_number": "12",
+            "tax": "20",
+            "subtotal": ""
+        },
+        {
+            "title": "Product3",
+            "charge_per_item": "52.00",
+            "item_number": "5",
+            "tax": "10",
+            "subtotal": ""
+        }
+
+    ],
+    "ServiceItems": [
+        {
+            "title": "Service1",
+            "charge_per_item": "30.00",
+            "item_number": "10",
+            "tax": "15",
+            "subtotal": ""
+        },
+        {
+            "title": "Service2",
+            "charge_per_item": "45.00",
+            "item_number": "12",
+            "tax": "20",
+            "subtotal": ""
+        },
+        {
+            "title": "Service3",
+            "charge_per_item": "52.00",
+            "item_number": "5",
+            "tax": "10",
+            "subtotal": ""
+        }
+
+    ],
+    "InvoiceNumber": "000001"
+
+}

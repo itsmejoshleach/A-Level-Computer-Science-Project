@@ -3,11 +3,10 @@
 ## What I'm making:
 I'm making a python-based invoicing software based around Sole-Traders.
 
-Based on: [https://practicalpython.yasoob.me/chapter3#figure-1](https://practicalpython.yasoob.me/chapter3#figure-1)
 
 ## Setup
-- Install the required python packages: ```python -m pip install -r requirements```
-- Install the required packages: ```sudo apt-get install wkhtmltopdf```
+- Install the required python packages: `python -m pip install -r requirements`
+~~- Install the required packages: `sudo apt-get install wkhtmltopdf` / `winget install -e --id wkhtmltopdf.wktmltox` (and add it to Path)~~
 - Assumes The Provider (Seller)'s Logo is located `static/img/Logo.jpg`
 - - Assumes The Provider (Seller)'s Logo is located `static/img/favicon.ico`
 
