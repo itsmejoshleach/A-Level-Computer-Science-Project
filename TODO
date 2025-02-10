@@ -26,10 +26,11 @@
           ✔ Provider[Bank_Account_Number]: must be 8 digits and integer @done(25-02-09 20:07)
           ✔ Customer Handler Email: must be an email (must contain '@' and '.domain' and be in the format 'x@y.z') @done(25-02-09 20:07)
     ☐ Version 4:
-      ☐ Email PDF
       ✔ Add Favicon @done(24-10-30 16:46)
       ☐ Make Due Date timings Adjustable (not always 14 days)
-      ☐ Redo Title (Dynamic - "ProviderCompany - Invoice - DD-MM-YYYY")
+      ☐ Redo Title (Dynamic - "ProviderCompany-Invoice-DD-MM-YYYY.pdf")
     ☐ Version 5:
-      ✔ (Version 3) Template Library @done(25-02-09 19:51)
+      ☐ Template Library
       ✔ (Version 3) Custom Template Uploads @done(25-02-09 19:51)
+      ☐ Email PDF
+
